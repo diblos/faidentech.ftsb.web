@@ -62,11 +62,23 @@ $name = $fid ? loadName($fid) : "User";
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
+<?php
+if ($fid) {
+?>
               <a href="../pages/profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <!-- <span class="d-sm-inline d-none">Sign In</span> -->
                 <span class="d-sm-inline d-none text-capitalize"><?php echo $name; ?></span>
               </a>
+<?php
+} else {
+?>
+              <a class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none text-capitalize"><?php echo $name; ?></span>
+              </a>
+<?php
+}
+?>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
