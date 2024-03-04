@@ -117,7 +117,7 @@ foreach($optionsUC as $option) {
 
         <section class="login-box container-fluid py-1">
             <!--for demo wrap-->
-            <h1 style="color:white">Record - <?php 
+            <h1 style="color:white">Record<?php 
               $name = isset($_POST["name"])? test_input($_POST["name"]) : null;
               $license = isset($_POST["license"])?test_input($_POST["license"]):null;
               $newdatestart = "";
@@ -131,10 +131,10 @@ foreach($optionsUC as $option) {
                   if ($datestart) {
                     $newdatestart = date('d/m/Y', $datestart);
                     $newdateend = date('d/m/Y', $dateend);
-                    echo $containt . ' (' . $newdatestart . ' - ' . $newdateend . ')';
+                    echo ' - ' . $containt . ' (' . $newdatestart . ' - ' . $newdateend . ')';
                     // echo '(' . $newdatestart . ' - ' . $newdateend . ')';
                   } else {
-                    echo 'Invalid Date: ' . $_POST['$datestart'];
+                    echo ' - Invalid Date: ' . $_POST['$datestart'];
                   }
                   // echo $containt.$datestart;
               } 
@@ -207,7 +207,7 @@ foreach($optionsUC as $option) {
                       // fix it
                     }
 
-                    require '../assets/php/database.php';
+                    require_once '../assets/php/database.php';
                     require_once '../assets/php/common.php';
 
                         // $get = "SELECT DISTINCT * FROM `gate_in` WHERE status!='Un-Authorized' AND DATE(time) BETWEEN '" . $newdatestart . "' AND '" . $newdateend . "' ORDER BY id DESC";
@@ -346,7 +346,8 @@ foreach($optionsUC as $option) {
         // echo $recordcount;
         ?>
 
-        <footer class="footer pt-3  " style="background-color: white; border-radius: 5px;">
+        <!-- fixed-bottom -->
+        <footer class="footer pt-3" style="background-color: white; border-radius: 5px;">
             <div class="container-fluid">
                 <div class="row align-items-center justify-content-lg-between">
                     <div class="col-lg-6 mb-lg-0 mb-4">

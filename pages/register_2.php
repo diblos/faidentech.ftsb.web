@@ -126,7 +126,7 @@ include 'register_tab.php';
                 <table cellpadding="0" cellspacing="0" border="0">
                     <tbody>
                         <?php
-                        require '../assets/php/database.php';
+                        require_once '../assets/php/database.php';
                         require_once '../assets/php/common.php';
 
                         $get = "SELECT * FROM `visitor_register` WHERE expired_date=CURRENT_DATE OR expired_date>CURRENT_DATE";

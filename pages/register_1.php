@@ -115,7 +115,7 @@ include 'register_tab.php';
         <!-- <h1 style="color:white">Registered Person -  -->
         <h2 style="color:white;text-align:left;">Registered Authorized Person - 
         <?php  
-        require '../assets/php/database.php';
+        require_once '../assets/php/database.php';
         require_once '../assets/php/common.php';
       
         $f1 = $fname==''?'':' AND UPPER(name) LIKE "%'.strtoupper($fname).'%"';
@@ -123,9 +123,9 @@ include 'register_tab.php';
         $f3 = ($fcategory=='' || $fcategory=='Others')?'':' AND UPPER(category) LIKE "%'.strtoupper($fcategory).'%"';
         
         if($fname=='' && $flicense=='' && $fcategory==''){
-          $get = "SELECT COUNT(DISTINCT license) AS total FROM `registered` ORDER BY id DESC";
+          $get = "SELECT COUNT(*) AS total FROM `registered` ORDER BY id DESC";
         } else {
-          $get = "SELECT COUNT(DISTINCT license) AS total FROM `registered` WHERE 1=1".$f1.$f2.$f3." ORDER BY id DESC";
+          $get = "SELECT COUNT(*) AS total FROM `registered` WHERE 1=1".$f1.$f2.$f3." ORDER BY id DESC";
         }
 
         $getData = $conn->query($get);

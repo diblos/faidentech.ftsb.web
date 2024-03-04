@@ -110,7 +110,8 @@ return false;
                     $_SESSION['valid'] = true;
                     $_SESSION['timeout'] = time();
                     $_SESSION['username'] = $_POST['username'];
-                    setcookie('ftype', $dbLogin, time() + (86400 * 30), "/");
+                    setcookie('fid', $dbLogin->id, time() + (86400 * 30), "/");
+                    setcookie('ftype', $dbLogin->type, time() + (86400 * 30), "/");
                     header("Location: pages/index.php");
                     exit();
                   }

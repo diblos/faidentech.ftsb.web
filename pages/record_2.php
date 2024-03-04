@@ -154,7 +154,7 @@ include 'topnav.php';
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       $containt = test_input($_POST["containt"]);
 
-                    require '../assets/php/database.php';
+                    require_once '../assets/php/database.php';
                     require_once '../assets/php/common.php';
                     // SELECT DISTINCT * FROM `gate_in` WHERE status!='Un-Authorized' AND DATE(time) = CURDATE() ORDER BY id ASC
                     // SELECT DISTINCT * FROM `gate_out` WHERE status!='Un-Authorized' AND DATE(time) = CURDATE() ORDER BY id DESC

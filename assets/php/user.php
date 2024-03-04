@@ -46,6 +46,7 @@ password_verify()
 */
 
 require 'database.php';
+require_once 'common.php';
 
 // create user function - password should be hashed before calling this function
 function createUser($username, $password, $type) {
@@ -83,7 +84,10 @@ function login($username, $password) {
       // $_SESSION['username'] = $username;
       // setcookie('ftype', $type, time() + (86400 * 30), "/");
       // header('location: index.php');
-      return $type;
+      return (object) [
+        'id' => $user_id,
+        'type' => $type
+      ];
     } else {
       // echo 'Invalid username or password';
       throw new Exception("Wrong password!", 1);
@@ -142,6 +146,20 @@ function updateProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
   $stmt->bind_param('ssssi', $first_name, $last_name, $bio, $avatar_url, $user_id);
   $stmt->execute();
   $stmt->close();
+}
+
+// load name from profile
+function loadName($user_id) {
+  global $conn;
+  $query = "SELECT first_name, last_name FROM profiles WHERE user_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('i', $user_id);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($first_name, $last_name);
+  $stmt->fetch();
+  $name = joinStrings(' ', $first_name, $last_name);
+  return $name;
 }
 
 ?>

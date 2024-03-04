@@ -6,6 +6,7 @@ unset($_SESSION['username']);
 // Finally, destroy the session.    
 session_destroy();
 
+setcookie('fid', "", time() - 3600, "/");
 setcookie('ftype', "", time() - 3600, "/");
 
 // Include URL for Login page to login again.
