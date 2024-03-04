@@ -20,6 +20,13 @@ foreach ( $array as $element ) {
 }
 return false;
 }
+
+// $password = password_hash('faiden1011', PASSWORD_DEFAULT);
+// echo $password;
+// echo "<br>";
+// $ver = password_verify('faiden10113', $password);
+// echo $ver;
+
 ?>
 <html lang="en">
 <head>
@@ -87,6 +94,7 @@ return false;
           <div class="row">
             <div class="col text-center py-2">
             <?php
+            require_once 'assets/php/user.php';
             $msg = '';
             
             if (isset($_POST['login']) && !empty($_POST['username']) 
@@ -95,11 +103,23 @@ return false;
                 $result = findObjectById($_POST['username'], $logins);
 
                 try {
-                  if(!$result){
+
+                  $dbLogin = login($_POST['username'], $_POST['password']); // returns user type or false
+                  if($dbLogin){
+                    session_start();
+                    $_SESSION['valid'] = true;
+                    $_SESSION['timeout'] = time();
+                    $_SESSION['username'] = $_POST['username'];
+                    setcookie('ftype', $dbLogin, time() + (86400 * 30), "/");
+                    header("Location: pages/index.php");
+                    exit();
+                  }
+
+                  if(!$result){ // if user not found in the array
                     throw new Exception("User not exists!", 1);
                   }
 
-                  if($result->pwd != $_POST['password']){
+                  if($result->pwd != $_POST['password']){ // if password not match with the array
                     throw new Exception("Wrong password!", 1);
                   }
 
@@ -107,8 +127,8 @@ return false;
                   $_SESSION['valid'] = true;
                   $_SESSION['timeout'] = time();
                   $_SESSION['username'] = $_POST['username'];
-                  setcookie('ftype', $result->type, time() + (86400 * 30), "/");
 
+                  setcookie('ftype', $result->type, time() + (86400 * 30), "/");
                   header("Location: pages/index.php");
                   exit();
                   
