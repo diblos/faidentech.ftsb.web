@@ -60,10 +60,16 @@ include 'nav.php';
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
+<?php
+include 'topnav.php';
+?>
+
     <div class="container-fluid py-4">
 
     <div class="row">
     
+                <div class="col"></div>
+
                 <div class="col p-0">
                   <form method="post" action="../pages/record_2.php">
                   <input type="hidden" name="containt" required="" value="Entrance" id="input-1">
@@ -98,6 +104,8 @@ include 'nav.php';
                   </button>
                 </form>
                 </div>
+
+                <div class="col"></div>
     
         </div>
       </div>

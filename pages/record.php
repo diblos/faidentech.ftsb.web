@@ -38,6 +38,11 @@ include 'nav.php';
 ?>
     <!-- RECORD / EXPORT  -->
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+<?php
+include 'topnav.php';
+?>
+
 <?php
 require '../assets/php/categories.php';
 // ITREATE THROUGH UNAUTHORIZED ARRAY AND PUSH TO AUTHORIZED ARRAY

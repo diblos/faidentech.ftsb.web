@@ -36,6 +36,10 @@ include 'nav.php';
     
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
+<?php
+include 'topnav.php';
+?>
+
         <!-- FORM STARTS HERE -->
         <div class="container-fluid py-4">
 <?php

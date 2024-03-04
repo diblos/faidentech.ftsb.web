@@ -52,7 +52,10 @@ if(!isset($_COOKIE[$cookie_name])) {
 if($ftype == 'admin'){
 ?>
         <li class="nav-item">
-          <a class="nav-link <?php echo ($file == 'register_m.php') ? 'active' : ''; ?>" href="../pages/register_m.php">
+          <?php
+          $activeClass = in_array($file, ['register_m.php','register_1.php','register_2.php']) ? 'active' : '';
+          ?>
+          <a class="nav-link <?php echo $activeClass; ?>" href="../pages/register_m.php">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +82,10 @@ if($ftype == 'admin'){
         </li>
 
         <li class="nav-item">
-          <a class="nav-link <?php echo ($file == 'record_m.php') ? 'active' : ''; ?>" href="../pages/record_m.php">
+          <?php
+          $activeClass = in_array($file, ['record_m.php','record_2.php','visitor.php']) ? 'active' : '';
+          ?>
+          <a class="nav-link <?php echo $activeClass; ?>" href="../pages/record_m.php">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"

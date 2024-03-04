@@ -43,6 +43,10 @@ $rowcount = 0;
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
+<?php
+include 'topnav.php';
+?>
+
     <!-- FORM STARTS HERE -->
 <?php
 require '../assets/php/categories.php';

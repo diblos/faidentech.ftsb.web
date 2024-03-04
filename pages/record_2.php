@@ -50,6 +50,10 @@ $containt = isset($_POST["containt"])? test_input($_POST["containt"]):null;
     <!-- RECORD_2 / EXPORT_2  -->
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
+<?php
+include 'topnav.php';
+?>
+
         <section class="login-box container-fluid py-1">
             <!--for demo wrap-->
             <div class="row">

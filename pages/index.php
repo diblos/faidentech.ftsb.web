@@ -43,7 +43,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 
 <body class="g-sidenav-show  bg-gray-100">
 
-<!-- NAV STARTS -->
+<!-- SIDE NAV STARTS -->
 
   <!-- <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " data-color="warning">
     <hr class="horizontal dark mt-0">
@@ -262,9 +262,15 @@ if(!isset($_COOKIE[$cookie_name])) {
 include 'nav.php';
 ?>
 
-<!-- NAV ENDS -->
+<!-- SIDE NAV ENDS -->
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+<!-- TOP NAV START -->
+
+<?php
+include 'topnav.php';
+?>
 
     <!--<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
       navbar-scroll="true">
@@ -392,6 +398,8 @@ include 'nav.php';
         </div>-->
       <!-- </div>
     </nav> -->
+
+<!-- TOP NAV ENDS -->
 
     <div class="container-fluid py-4">
       <div class="row">
