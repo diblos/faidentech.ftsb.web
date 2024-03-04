@@ -25,12 +25,14 @@ if(!isset($_COOKIE[$cookie_name])) {
     Faidentech FTSB
   </title>
 
-  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />-->
-  <link href="../assets/css/font-awsome.css"/>
+   <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />-->
+   <link href="../assets/css/font-awsome.css"/>
   <script src="../assets/js/core/kit-fontawesome.js" crossorigin="anonymous"></script>
 
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  <link href="../assets/css/table.css" rel="stylesheet"/>
 
   <!--<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>-->
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -39,6 +41,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 
   <script src="../assets/js/core/jquery-3.7.1.js"></script>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+  
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -57,76 +60,77 @@ include 'nav.php';
 include 'topnav.php';
 ?>
 
-    <!-- <div class="container-fluid py-4"> -->
+<div class="container-fluid py-4"> 
 
-    <div class="row">
-    
-                <div class="col p-0">
-                  <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Entrance" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                    <i class="fa fa-caret-right" aria-hidden="true"></i> <i  class="fa fa-car"></i> Total Entrance
-                  </button></form>
-                </div>
-
-                <div class="col p-0">
-                <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Exit" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                    <i class="fa fa-caret-left" aria-hidden="true"></i>   <i class="fa fa-car"></i> Total Exit
-                  </button>
-                </form>
-                </div>
-
-                <div class="col p-0">
-                <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                  <i class="fa fa-id-card" aria-hidden="true"></i> Authorize
-                  </button>
-                </form>
-                </div>
-
-                <div class="col p-0">
-                <form method="post" action="../pages/visitor.php">
-                  <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i> Visitor
-                  </button>
-                </form>
-                </div>
-    
+        <div id="newForm" class="login-box">
+            <h2>PROFILES</h2>
+            <form action="insert.php" method="post">
+                <div class="user-box">
+                    <input type="text" name="name" required="" id="input-1">
+                    <label>ENTER PERSON NAME</label>
+                  </div>
+                <div class="user-box">
+                    <input type="text" name="license" required="" id="input-3">
+                    <label>LICENSE PLATE</label>
+                  </div>
+                   <div class="row">
+                   <div class="col-2">
+                      <a href="#">
+                        <input class="btn btn-light" type="button" value="Cancel" onclick="toggleObjectVisibility(`newForm`, false);">
+                      </a>
+                    </div>
+                    <div class="col text-right">
+                      <a href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Register</button>
+                      </a>
+                    </div>
+                   </div>
+                
+            </form>
+                
         </div>
-      </div>
 
-      <footer class="footer pt-3 fixed-bottom" style="background-color: white; border-radius: 5px;">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                © 2023
-                made with <img src="../assets/css/img/Reiftech.jpg" alt="" style="width:10px;"> Powered by <img src="../assets/css/img/faiden-logo_vectorized-glow.png" alt="" style="width:30%;">
-                <a href="https://faiden.com.my/" class="font-weight-bold" target="_blank"></a>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://faiden.com.my/" class="nav-link text-muted" target="_blank">Faiden Tech Team</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://faiden.com.my/" class="nav-link text-muted" target="_blank">About
-                    Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://faiden.com.my/talk-to-us/" class="nav-link text-muted" target="_blank">Contact</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="row py-1">
+          <div class="col">&nbsp;</div>
         </div>
-      </footer>
-    </div>
+
+        <div id="newForm2" class="login-box">
+            <h2>CHANGE PASSWORD</h2>
+            <form action="insert.php" method="post">
+                <div class="user-box">
+                    <input type="text" name="name" required="" id="input-1">
+                    <label>OLD PASSWORD</label>
+                  </div>
+                <div class="user-box">
+                    <input type="text" name="license" required="" id="input-3">
+                    <label>NEW PASSWORD</label>
+                  </div>
+                   <div class="row">
+                   <div class="col-2">
+                      <a href="#">
+                        <input class="btn btn-light" type="button" value="Cancel" onclick="toggleObjectVisibility(`newForm`, false);">
+                      </a>
+                    </div>
+                    <div class="col text-right">
+                      <a href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Register</button>
+                      </a>
+                    </div>
+                   </div>
+                
+            </form>
+                
+        </div>
+
+</div>
 
   </main>
 

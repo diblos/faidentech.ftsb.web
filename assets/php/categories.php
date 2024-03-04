@@ -49,4 +49,15 @@ $options = array(
       'value' => 'Visitor'
     ]
   );
+  // USER TYPES
+  $utypes = array(
+    (object) [
+      'label' => 'Admin',
+      'value' => 'user'
+    ],
+    (object) [
+      'label' => 'User',
+      'value' => 'user'
+    ]
+  );
 ?>
