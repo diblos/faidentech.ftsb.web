@@ -44,10 +44,10 @@ require_once 'categories.php';
             // print_r($row);
 
             echo '<tr style="color:black;"> 
-                  <td>' . $name . '</td> 
+                  <td>&nbsp;&nbsp; ' . $name . '</td> 
                   <td>' . $status . '</td> 
-                  <td>' . $time . '</td> 
-                  <td>' . $gate . '</td> 
+                  <td class="text-center">' . $time . '</td> 
+                  <td class="text-center">' . $gate . '</td> 
               </tr>';
         }
     }

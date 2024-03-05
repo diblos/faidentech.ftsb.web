@@ -203,9 +203,17 @@ include 'topnav.php';
           </div>
         </div>
 
+        
+
 </div>
 
+<?php
+    include 'footer.php';
+?>
+
   </main>
+
+   
 
   <!-- <script src="../assets/js/visitor_table.js"></script>
   <script src="../assets/js/image.js"></script>
