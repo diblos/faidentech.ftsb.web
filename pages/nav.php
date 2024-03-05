@@ -23,7 +23,10 @@ if(!isset($_COOKIE[$cookie_name])) {
         </li>
         <p></p>
         <li class="nav-item">
-          <a class="nav-link  <?php echo ($file == 'index.php') ? 'active' : ''; ?>" href="../pages/index.php">
+          <?php
+          $activeClass = in_array($file, ['index.php','profile.php']) ? 'active' : '';
+          ?>
+          <a class="nav-link <?php echo $activeClass; ?>" href="../pages/index.php">
             <div
               class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg"

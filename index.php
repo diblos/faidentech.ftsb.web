@@ -80,7 +80,7 @@ return false;
           </div></div>
           <div class="row">
             <div class="col text-center p-0">
-            <a>
+            <a class="m-0">
             <span></span>
             <span></span>
             <span></span>

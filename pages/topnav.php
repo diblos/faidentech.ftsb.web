@@ -65,7 +65,7 @@ $name = $fid ? loadName($fid) : "User";
 <?php
 if ($fid) {
 ?>
-              <a href="../pages/profile.php" class="nav-link text-body font-weight-bold px-0">
+              <a href="../pages/profile.php" class="nav-link text-dark font-weight-bold px-0" title="User Profile">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none text-capitalize"><?php echo $name; ?></span>
               </a>

@@ -66,6 +66,29 @@ function changePassword($user_id, $new_password) {
   $stmt->bind_param('si', $new_password, $user_id);
   $stmt->execute();
   $stmt->close();
+  return true;
+}
+
+// function to verify password
+function verifyPassword($user_id, $password) {
+  global $conn;
+  $query = "SELECT password FROM users WHERE user_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('i', $user_id);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($hashed_password);
+  $stmt->fetch();
+  if ($stmt->num_rows == 1) {
+    if (password_verify($password, $hashed_password)) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return false;
+  }
+  $stmt->close();
 }
 
 // login function
@@ -146,6 +169,7 @@ function updateProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
   $stmt->bind_param('ssssi', $first_name, $last_name, $bio, $avatar_url, $user_id);
   $stmt->execute();
   $stmt->close();
+  return true;
 }
 
 // load name from profile
@@ -160,6 +184,16 @@ function loadName($user_id) {
   $stmt->fetch();
   $name = joinStrings(' ', $first_name, $last_name);
   return $name;
+}
+
+function updateName($user_id, $first_name, $last_name) {
+  global $conn;
+  $query = "UPDATE profiles SET first_name = ?, last_name = ? WHERE user_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('ssi', $first_name, $last_name, $user_id);
+  $stmt->execute();
+  $stmt->close();
+  return true;
 }
 
 ?>
