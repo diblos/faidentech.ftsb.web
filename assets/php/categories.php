@@ -52,8 +52,12 @@ $options = array(
   // USER TYPES
   $utypes = array(
     (object) [
+      'label' => 'Super Admin',
+      'value' => 'superadmin'
+    ],
+    (object) [
       'label' => 'Admin',
-      'value' => 'user'
+      'value' => 'admin'
     ],
     (object) [
       'label' => 'User',
