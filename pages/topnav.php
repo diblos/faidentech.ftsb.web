@@ -1,4 +1,12 @@
 <?php
+$cookie_name = "ftype";
+$ftype = 'user';
+if(!isset($_COOKIE[$cookie_name])) {
+    $ftype = 'user';
+  } else {
+    $ftype = $_COOKIE[$cookie_name];
+  }
+
  $ptitle = "Dashboard";
  switch ($file) {
   case 'record.php':
@@ -74,7 +82,7 @@ if ($fid) {
 ?>
               <a class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none text-capitalize"><?php echo $name; ?></span>
+                <span class="d-sm-inline d-none text-capitalize"><?php echo $ftype; ?></span>
               </a>
 <?php
 }

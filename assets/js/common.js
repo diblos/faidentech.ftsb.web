@@ -1,3 +1,21 @@
+// function to send post request to server
+function sendPostRequest(url, data, callback) {
+    try {
+        $.ajax({
+            type: "POST",
+            data: data,
+            url: url,
+            success: function (data) {
+                callback(data);
+            }
+        });
+        return false;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
 function setRow(rowclass, bool) {
     const rows = document.getElementsByClassName(rowclass);
     for (let i = 0; i < rows.length; i++) {
@@ -15,6 +33,9 @@ function editMode(objectId, bool) {
         return;
     }
     // console.log(objectId, bool);
+
+    // AUTHORIZE REG ONWARDS
+
     toggleObjectEnablity(`${objectId}-edit`, !bool);
     toggleObjectEnablity(`${objectId}-save`, bool);
 
@@ -40,6 +61,13 @@ function editMode(objectId, bool) {
 
     toggleObjectVisibility(`${objectId}-expired_dateV`, !bool);
     toggleObjectVisibility(`${objectId}-expired_dateI`, bool);
+
+    // USER REG ONWARDS
+    toggleObjectVisibility(`${objectId}-first_nameV`, !bool);
+    toggleObjectVisibility(`${objectId}-first_nameI`, bool);
+
+    toggleObjectVisibility(`${objectId}-typeV`, !bool);
+    toggleObjectVisibility(`${objectId}-typeI`, bool);
 
     return false;
 }

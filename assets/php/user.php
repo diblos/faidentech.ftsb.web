@@ -58,6 +58,30 @@ function createUser($username, $password, $type) {
   $stmt->close();
 }
 
+// get user_id from username function
+function getUserId($username) {
+  global $conn;
+  $query = "SELECT user_id FROM users WHERE username = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('s', $username);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($user_id);
+  $stmt->fetch();
+  return $user_id;
+}
+
+// update user type function
+function updateUserType($user_id, $type) {
+  global $conn;
+  $query = "UPDATE users SET type = ? WHERE user_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param('si', $type, $user_id);
+  $stmt->execute();
+  $stmt->close();
+  return true;
+}
+
 // change password function - password should be hashed before calling this function
 function changePassword($user_id, $new_password) {
   global $conn;
@@ -126,7 +150,7 @@ function login($username, $password) {
 // function to list all profile
 function listAllProfiles() {
   global $conn;
-  $query = "SELECT user_id, first_name, last_name, bio, avatar_url FROM profiles";
+  $query = "SELECT P.*,U.* FROM profiles AS P JOIN users AS U ON P.user_id = U.user_id";
   $result = $conn->query($query);
   return $result;
 }

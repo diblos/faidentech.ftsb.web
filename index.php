@@ -2,6 +2,11 @@
 ob_start(); 
 $logins = array(
   (object) [
+    'usr' => 'Super',
+    'pwd' => 'faiden1011',
+    'type' => 'superadmin'
+  ],
+  (object) [
     'usr' => 'Faiden',
     'pwd' => 'faiden1011',
     'type' => 'admin'
