@@ -33,6 +33,12 @@ if(!isset($_COOKIE[$cookie_name])) {
   case 'profile.php':
     $ptitle = "Profile";
     break;
+  case 'usermgmt.php':
+    $ptitle = "User Management";
+    break;
+  case 'useractivities.php':
+    $ptitle = "User Activities";
+    break;
   default:
     $ptitle = "Dashboard";
     break;

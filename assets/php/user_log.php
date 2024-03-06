@@ -41,4 +41,30 @@ function getUserActivities($user_id, $start_date, $end_date) {
   return $result;
 }
 
+// get user activities function by fdatestart, fdateend, fname, funame, ftype
+function getUserActivitiesByFilter($fdatestart, $fdateend, $fname, $funame, $ftype) {
+  global $conn;
+
+  $f1 = $fname==''?'':' AND UPPER(first_name) LIKE "%'.strtoupper($fname).'%"';
+  $f2 = $funame==''?'':' AND UPPER(username) LIKE "%'.strtoupper($funame).'%"';
+  $f3 = $ftype=='' || $ftype=='Others' ?'':' AND UPPER(type) LIKE "%'.strtoupper($ftype).'%"';
+
+  $timefilter = ($fdatestart=='' && $fdateend=='')?'AND DATE(timestamp) = CURDATE()':'AND DATE(timestamp) BETWEEN "'.date('Y-m-d', $fdatestart).'" AND "'.date('Y-m-d', $fdateend).'"';
+
+  $query = "SELECT UA.*,U.username,U.type,UP.first_name ".
+  "FROM user_activities AS UA ".
+  "CROSS JOIN user as U ".
+  "CROSS JOIN user_profiles as UP ".
+  "WHERE U.user_id = UA.user_id ".
+  "AND U.user_id = UP.user_id ".$timefilter." ".$f1.$f2.$f3.
+  "ORDER BY timestamp DESC";
+
+  // echo $query;
+  
+  $getData = $conn->query($query);
+
+  // $stmt->close();
+  return $getData;
+}
+
 ?>
