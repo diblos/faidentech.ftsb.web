@@ -100,6 +100,7 @@ return false;
             <div class="col text-center py-2">
             <?php
             require_once 'assets/php/user.php';
+            require_once 'assets/php/user_log.php';
             $msg = '';
             
             if (isset($_POST['login']) && !empty($_POST['username']) 
@@ -117,7 +118,14 @@ return false;
                     $_SESSION['username'] = $_POST['username'];
                     setcookie('fid', $dbLogin->id, time() + (86400 * 30), "/");
                     setcookie('ftype', $dbLogin->type, time() + (86400 * 30), "/");
-                    header("Location: pages/index.php");
+                    addUserActivity($dbLogin->id, 'login');
+
+                    if($result->type == 'superadmin'){
+                      header("Location: pages/usermgmt.php");
+                    }else{
+                      header("Location: pages/index.php");
+                    }
+
                     exit();
                   }
 
@@ -135,7 +143,11 @@ return false;
                   $_SESSION['username'] = $_POST['username'];
 
                   setcookie('ftype', $result->type, time() + (86400 * 30), "/");
-                  header("Location: pages/index.php");
+                  if($result->type == 'superadmin'){
+                    header("Location: pages/usermgmt.php");
+                  }else{
+                    header("Location: pages/index.php");
+                  }
                   exit();
                   
                 } catch (\Throwable $th) {

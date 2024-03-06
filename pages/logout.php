@@ -1,4 +1,18 @@
 <?php
+include_once '../assets/php/user_log.php';
+
+$cookie_name = "fid";
+$fid = null;
+if(!isset($_COOKIE[$cookie_name])) {
+    $fid = null;
+  } else {
+    $fid = $_COOKIE[$cookie_name];
+  }
+
+  if($fid){
+    addUserActivity($fid, 'logout');
+  }
+
 // Initialize the session.
 session_start();
 // Unset all of the session variables.

@@ -12,6 +12,8 @@ if(!isset($_COOKIE[$cookie_name])) {
   }
 
 require_once '../assets/php/user.php';
+require_once '../assets/php/user_log.php';
+
 $alert = false;
 
 // section update user name
@@ -20,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
   $name = $_POST['name'];
   $result = updateName($id, $name, null);
   if ($result) {
+    addUserActivity($id, 'update profile');
     $msg = "Name updated successfully!";
     $alert = false;
   } else {
@@ -45,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     }
     $result = changePassword($id, password_hash($newpwd, PASSWORD_DEFAULT));
     if ($result) {
+      addUserActivity($id, 'change password');
       $msg = "Password changed successfully!";
       $alert = false;
     } else {

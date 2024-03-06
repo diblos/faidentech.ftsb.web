@@ -6,10 +6,18 @@ $parts = explode('/', $_SERVER["PHP_SELF"]);
 $file = $parts[count($parts) - 1];
 
 if(!isset($_COOKIE[$cookie_name])) {
-    $ftype = 'user';
-  } else {
-    $ftype = $_COOKIE[$cookie_name];
-  }
+  $ftype = 'user';
+} else {
+  $ftype = $_COOKIE[$cookie_name];
+}
+
+$cookie_name = "fid";
+$fid = null;
+if(!isset($_COOKIE[$cookie_name])) {
+  $fid = null;
+} else {
+  $fid = $_COOKIE[$cookie_name];
+}
 
 require_once '../assets/php/categories.php';
 require_once '../assets/php/user.php';
@@ -27,7 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     if(!isset($user_id)) {
       throw new Exception("User creation failed!", 1);
     }
-    createProfile($user_id, $first_name, null, null, null);
+    createProfile($user_id, $name, null, null, null);
+    if($fid){
+      addUserActivity($fid, 'add new user');
+    }
     $msg = 'New user added successfully!';
     $alert = false;
   } catch (\Throwable $th) {
@@ -47,6 +58,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     try {
       updateName($id, $name, null);
       updateUserType($id, $type);
+      if($fid){
+        addUserActivity($fid, 'update user profile');
+      }
       $msg = 'User profile updated successfully!';
       $alert = false;
     } catch (\Throwable $th) {
@@ -58,6 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     try {
       $defaultpwd = '12345678';
       changePassword($id, password_hash($defaultpwd, PASSWORD_DEFAULT));
+      if($fid){
+        addUserActivity($fid, 'reset user password');
+      }
       $msg = 'User password have been successfully reset to '.$defaultpwd.'!';
       $alert = false;
     } catch (\Throwable $th) {

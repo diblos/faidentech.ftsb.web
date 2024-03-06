@@ -1,8 +1,8 @@
 <?php
 /*
 
--- Create the `users` table
-CREATE TABLE users (
+-- Create the `user` table
+CREATE TABLE user (
   user_id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
@@ -11,26 +11,26 @@ CREATE TABLE users (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Create the `profiles` table
-CREATE TABLE profiles (
+-- Create the `user_profiles` table
+CREATE TABLE user_profiles (
   profile_id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   first_name VARCHAR(50),
   last_name VARCHAR(50),
   bio TEXT,
   avatar_url VARCHAR(255),
-  FOREIGN KEY (user_id) REFERENCES users(user_id)
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Add an index on the username column for faster searches (optional)
-ALTER TABLE users ADD INDEX (username);
+ALTER TABLE user ADD INDEX (username);
 
 
-INSERT INTO users (username, password, type)
+INSERT INTO user (username, password, type)
 VALUES ('Faiden', 'your_hashed_password', 'admin'),
        ('Operator1', 'your_hashed_password', 'user');
 
-INSERT INTO users (username, password, type)
+INSERT INTO user (username, password, type)
 VALUES ('Operator2', 'your_hashed_password', 'user');
 
 */
@@ -45,13 +45,13 @@ password_verify()
 
 */
 
-require 'database.php';
+require_once 'database.php';
 require_once 'common.php';
 
 // create user function - password should be hashed before calling this function
 function createUser($username, $password, $type) {
   global $conn;
-  $query = "INSERT INTO users (username, password, type) VALUES (?, ?, ?)";
+  $query = "INSERT INTO user (username, password, type) VALUES (?, ?, ?)";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('sss', $username, $password, $type);
   $stmt->execute();
@@ -61,7 +61,7 @@ function createUser($username, $password, $type) {
 // get user_id from username function
 function getUserId($username) {
   global $conn;
-  $query = "SELECT user_id FROM users WHERE username = ?";
+  $query = "SELECT user_id FROM user WHERE username = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('s', $username);
   $stmt->execute();
@@ -74,7 +74,7 @@ function getUserId($username) {
 // update user type function
 function updateUserType($user_id, $type) {
   global $conn;
-  $query = "UPDATE users SET type = ? WHERE user_id = ?";
+  $query = "UPDATE user SET type = ? WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('si', $type, $user_id);
   $stmt->execute();
@@ -85,7 +85,7 @@ function updateUserType($user_id, $type) {
 // change password function - password should be hashed before calling this function
 function changePassword($user_id, $new_password) {
   global $conn;
-  $query = "UPDATE users SET password = ? WHERE user_id = ?";
+  $query = "UPDATE user SET password = ? WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('si', $new_password, $user_id);
   $stmt->execute();
@@ -96,7 +96,7 @@ function changePassword($user_id, $new_password) {
 // function to verify password
 function verifyPassword($user_id, $password) {
   global $conn;
-  $query = "SELECT password FROM users WHERE user_id = ?";
+  $query = "SELECT password FROM user WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
@@ -118,7 +118,7 @@ function verifyPassword($user_id, $password) {
 // login function
 function login($username, $password) {
   global $conn;
-  $query = "SELECT user_id, username, password, type FROM users WHERE username = ?";
+  $query = "SELECT user_id, username, password, type FROM user WHERE username = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('s', $username);
   $stmt->execute();
@@ -150,7 +150,7 @@ function login($username, $password) {
 // function to list all profile
 function listAllProfiles() {
   global $conn;
-  $query = "SELECT P.*,U.* FROM profiles AS P JOIN users AS U ON P.user_id = U.user_id";
+  $query = "SELECT P.*,U.* FROM user_profiles AS P JOIN user AS U ON P.user_id = U.user_id";
   $result = $conn->query($query);
   return $result;
 }
@@ -158,7 +158,7 @@ function listAllProfiles() {
 // function to load a profile
 function loadProfile($user_id) {
   global $conn;
-  $query = "SELECT user_id, first_name, last_name, bio, avatar_url FROM profiles WHERE user_id = ?";
+  $query = "SELECT user_id, first_name, last_name, bio, avatar_url FROM user_profiles WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
@@ -178,7 +178,7 @@ function loadProfile($user_id) {
 // create profile function
 function createProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
   global $conn;
-  $query = "INSERT INTO profiles (user_id, first_name, last_name, bio, avatar_url) VALUES (?, ?, ?, ?, ?)";
+  $query = "INSERT INTO user_profiles (user_id, first_name, last_name, bio, avatar_url) VALUES (?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('issss', $user_id, $first_name, $last_name, $bio, $avatar_url);
   $stmt->execute();
@@ -188,7 +188,7 @@ function createProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
 // update profile function
 function updateProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
   global $conn;
-  $query = "UPDATE profiles SET first_name = ?, last_name = ?, bio = ?, avatar_url = ? WHERE user_id = ?";
+  $query = "UPDATE user_profiles SET first_name = ?, last_name = ?, bio = ?, avatar_url = ? WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('ssssi', $first_name, $last_name, $bio, $avatar_url, $user_id);
   $stmt->execute();
@@ -199,7 +199,7 @@ function updateProfile($user_id, $first_name, $last_name, $bio, $avatar_url) {
 // load name from profile
 function loadName($user_id) {
   global $conn;
-  $query = "SELECT first_name, last_name FROM profiles WHERE user_id = ?";
+  $query = "SELECT first_name, last_name FROM user_profiles WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('i', $user_id);
   $stmt->execute();
@@ -212,7 +212,7 @@ function loadName($user_id) {
 
 function updateName($user_id, $first_name, $last_name) {
   global $conn;
-  $query = "UPDATE profiles SET first_name = ?, last_name = ? WHERE user_id = ?";
+  $query = "UPDATE user_profiles SET first_name = ?, last_name = ? WHERE user_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('ssi', $first_name, $last_name, $user_id);
   $stmt->execute();
