@@ -32,7 +32,8 @@
 
 <?php
 include 'nav.php';
-require '../assets/php/categories.php';
+require_once '../assets/php/categories.php';
+require_once '../assets/php/common.php';
 // ITREATE THROUGH UNAUTHORIZED ARRAY AND PUSH TO AUTHORIZED ARRAY
 foreach($optionsUC as $option) {
     array_push($options, $option);
@@ -276,13 +277,6 @@ include 'topnav.php';
                     }
 
                     }
-
-                        function test_input($data) {
-                          $data = trim($data);
-                          $data = stripslashes($data);
-                          $data = htmlspecialchars($data);
-                          return $data;
-                        }
                         ?>
                     </tbody>
                 </table>

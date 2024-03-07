@@ -53,7 +53,8 @@ foreach($optionsUC as $option) {
 ?>
         <div class="container-fluid py-4">
             <div class="login-box">
-                <h2>Record</h2>
+                <!-- <h2>Record</h2> -->
+                <h2>Report</h2>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
                     <div class="user-box">
                         <label></label>
@@ -329,12 +330,6 @@ foreach($optionsUC as $option) {
 
                     }
 
-                        function test_input($data) {
-                          $data = trim($data);
-                          $data = stripslashes($data);
-                          $data = htmlspecialchars($data);
-                          return $data;
-                        }
                         ?>
                     </tbody>
                 </table>
