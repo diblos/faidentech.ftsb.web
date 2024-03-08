@@ -3,19 +3,9 @@ ob_start();
 $logins = array(
   (object) [
     'usr' => 'Super',
-    'pwd' => 'faiden1011',
+    'pwd' => 'faiden@101123',
     'type' => 'superadmin'
-  ],
-  (object) [
-    'usr' => 'Faiden',
-    'pwd' => 'faiden1011',
-    'type' => 'admin'
-  ],
-  (object) [
-    'usr' => 'Operator1',
-    'pwd' => '12345678',
-    'type' => 'user'
-   ]
+  ]
 );
 function findObjectById($usr, $array){
 foreach ( $array as $element ) {
