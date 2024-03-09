@@ -81,6 +81,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
       $msg = $th->getMessage();
       $alert = true;
     }
+  } elseif (isset($_POST['REMOVE'])) {
+    $id = $_POST['uid'];
+    try {
+      deleteUser($id);
+      if($fid){
+        addUserActivity($fid, 'delete user', $id);
+      }
+      $msg = 'User deleted successfully!';
+      $alert = false;
+    } catch (\Throwable $th) {
+      $msg = $th->getMessage();
+      $alert = true;
+    }
   }
 
  
@@ -275,10 +288,10 @@ include 'topnav.php';
                   </td>
                   <td class="w23 p-1">
 
-                      <a id="sel'.$user_id.'-edit" class="btn btn-dark" title="Edit User Profile" role="button" href="#" onclick="setRow(\'rownum\', true);editMode(\'sel'.$user_id.'\', true);return false;"><i class="fa fa-edit"></i></a>
-                      <button id="sel'.$user_id.'-save" class="btn btn-dark disabled" title="Save User Profile" type="submit" name="PROFILE"><i class="fa fa-save"></i></button>
-                      <button id="sel'.$user_id.'-save" class="btn btn-dark" title="Password Reset" type="submit" name="RESET"><i class="fa fa-key"></i></button>
-                      <a id="sel'.$user_id.'-delete" class="btn btn-dark disabled" title="Delete User" role="button" href="delete_1.php?id='.$user_id.'"><i class="fa fa-trash"></i></a>
+                      <a><button id="sel'.$user_id.'-edit" class="btn btn-dark" title="Edit User Profile" onclick="setRow(\'rownum\', true);editMode(\'sel'.$user_id.'\', true);return false;"><i class="fa fa-edit"></i></button></a>
+                      <a><button id="sel'.$user_id.'-save" class="btn btn-dark disabled" title="Save User Profile" type="submit" name="PROFILE"><i class="fa fa-save"></i></button></a>
+                      <a><button id="sel'.$user_id.'-save" class="btn btn-dark" title="Password Reset" type="submit" name="RESET"><i class="fa fa-key"></i></button></a>
+                      <a><button id="sel'.$user_id.'-save" class="btn btn-dark" title="Delete User" type="submit" name="REMOVE"><i class="fa fa-trash"></i></button></a>
                     
                   </td>
               </tr>

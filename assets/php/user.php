@@ -25,6 +25,8 @@ CREATE TABLE user_profiles (
 -- Add an index on the username column for faster searches (optional)
 ALTER TABLE user ADD INDEX (username);
 
+ALTER TABLE user
+ADD COLUMN deleted_at DATETIME DEFAULT NULL;
 
 INSERT INTO user (username, password, type)
 VALUES ('Faiden', 'your_hashed_password', 'admin'),
@@ -57,6 +59,24 @@ function createUser($username, $password, $type) {
   $stmt->execute();
   $stmt->close();
 }
+
+// delete user function by marked deleted_at column with current timestamp
+function deleteUser($user_id) {
+  try {
+    global $conn;
+    $query = "UPDATE user SET deleted_at = CURRENT_TIMESTAMP WHERE user_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+    $stmt->close();
+    return true;
+  } catch (\Throwable $th) {
+    //throw $th;
+    return false;
+  }
+  
+}
+
 
 // get user_id from username function
 function getUserId($username) {
@@ -118,7 +138,7 @@ function verifyPassword($user_id, $password) {
 // login function
 function login($username, $password) {
   global $conn;
-  $query = "SELECT user_id, username, password, type FROM user WHERE username = ?";
+  $query = "SELECT user_id, username, password, type FROM user WHERE username = ? AND deleted_at IS NULL";
   $stmt = $conn->prepare($query);
   $stmt->bind_param('s', $username);
   $stmt->execute();
@@ -150,7 +170,7 @@ function login($username, $password) {
 // function to list all profile
 function listAllProfiles() {
   global $conn;
-  $query = "SELECT P.*,U.* FROM user_profiles AS P JOIN user AS U ON P.user_id = U.user_id";
+  $query = "SELECT P.*,U.* FROM user_profiles AS P JOIN user AS U ON P.user_id = U.user_id WHERE U.deleted_at IS NULL ORDER BY P.user_id DESC";
   $result = $conn->query($query);
   return $result;
 }
