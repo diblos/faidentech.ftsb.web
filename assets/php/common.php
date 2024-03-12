@@ -21,4 +21,17 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
+
+function licensePlateQueryFormat($licensePlate) {
+    // upper case
+    $licensePlate = strtoupper($licensePlate);
+
+     // Remove any existing spaces
+     $licensePlate = str_replace(' ', '', $licensePlate);
+
+     // Insert '%' between each character
+     $licensePlate = preg_replace('/(.)(?=.)/', '$1%', $licensePlate);
+ 
+     return $licensePlate;
+}   
 ?>

@@ -91,6 +91,7 @@ return false;
             <?php
             require_once 'assets/php/user.php';
             require_once 'assets/php/user_log.php';
+
             $msg = '';
             
             if (isset($_POST['login']) && !empty($_POST['username']) 
