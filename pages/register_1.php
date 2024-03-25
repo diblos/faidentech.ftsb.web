@@ -49,7 +49,7 @@ require '../assets/php/categories.php';
 <?php
 include 'register_tab.php';
 ?>
-        <div id="newForm" class="login-box d-none">
+        <div id="newForm" class="login-box pb-3 d-none">
             <h2>AUTHORIZE REGISTRATION FORM</h2>
             <form action="insert.php" method="post">
                 <div class="user-box">
@@ -74,18 +74,19 @@ include 'register_tab.php';
                     </select>
                    </div>
                    <div class="row">
-                   <div class="col-2">
-                      <a href="#">
+                   <div class="col"></div>
+                   <div class="col-2 p-0" style="text-align:right;">
+                      <a href="#" class="m-0">
                         <input class="btn btn-light" type="button" value="Cancel" onclick="toggleObjectVisibility(`newForm`, false);">
                       </a>
                     </div>
-                    <div class="col text-right">
-                      <a href="#">
+                    <div class="col-2 p-0">
+                      <a href="#" class="m-0">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-                        <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Register</button>
+                        <button type="submit" class="btn btn-light px-5 m-0"><i class="icon-lock"></i> Register</button>
                       </a>
                     </div>
                    </div>
