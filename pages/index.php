@@ -39,6 +39,20 @@ if(!isset($_COOKIE[$cookie_name])) {
 
   <script src="../assets/js/core/jquery-3.7.1.js"></script>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>-->
+
+  <style>
+      .login-box {
+      /* top: 50%;
+      left: 50%;
+      width: 10HV;
+      padding: 40px; */
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      /* border-radius: 10px; */
+    }
+  </style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -586,11 +600,11 @@ include 'topnav.php';
 
       <div class="row my-4">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-          <div class="card">
-            <div class="card-header pb-0">
+          <div class="card login-box">
+            <div class="card-header pb-0 bg-transparent">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Last Records</h6>
+                  <h6 class="text-light font-weight-bold">Last Records</h6>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
@@ -606,15 +620,15 @@ include 'topnav.php';
                 </div>
               </div>
             </div>
-            <div class="card-body px-0 py-2">
+            <div class="card-body px-0 py-2 text-light">
               <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">License</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Time</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gate</th>
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7">License</th>
+                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7">Time</th>
+                      <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7">Gate</th>
                     </tr>
                   </thead>
                   <tbody id="table">
@@ -625,11 +639,11 @@ include 'topnav.php';
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
-          <div class="card h-100">
-            <div class="card-header pb-0">
-              <h6>Visitor Record</h6>
+          <div class="card h-100 login-box">
+            <div class="card-header pb-0 bg-transparent">
+              <h6 class="text-light font-weight-bold">Visitor Record</h6>
             </div>
-            <div class="card-body p-3">
+            <div class="card-body p-3 text-light">
               <div class="timeline timeline-one-side">
                 <div id="visitor_table"></div>
               </div>
