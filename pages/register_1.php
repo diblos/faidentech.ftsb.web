@@ -45,7 +45,7 @@ include 'topnav.php';
 <?php
 require '../assets/php/categories.php';
 ?>
-    <div class="container-fluid py-4"> 
+    <div class="container-fluid py-4 px-0"> 
 <?php
 include 'register_tab.php';
 ?>
@@ -103,7 +103,7 @@ include 'register_tab.php';
     $fcategory = isset($_POST["fcategory"])?test_input($_POST["fcategory"]):null;
     ?>
 
-    <section class="login-box container-fluid py-1">
+    <section class="login-box container-fluid py-1 my-0">
       <div class="row">
         <div class="col pt-3 pb-0">
 

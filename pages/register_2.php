@@ -41,7 +41,7 @@ include 'topnav.php';
 ?>
 
         <!-- FORM STARTS HERE -->
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-4 px-0">
 <?php
 include 'register_tab.php';
 ?>
@@ -96,7 +96,7 @@ include 'register_tab.php';
         </div>
         <!-- FORM ENDS HERE -->
 
-        <section class="login-box container-fluid py-1">
+        <section class="login-box container-fluid py-1 my-0">
             <!--for demo wrap-->
             <div class="row">
               <div class="col pt-3 pb-0">

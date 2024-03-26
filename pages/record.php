@@ -51,7 +51,7 @@ foreach($optionsUC as $option) {
 }
 
 ?>
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-4 px-0">
             <div class="login-box">
                 <!-- <h2>Record</h2> -->
                 <h2>Report</h2>
@@ -116,7 +116,7 @@ foreach($optionsUC as $option) {
             </div>
         </div>
 
-        <section class="login-box container-fluid py-1">
+        <section class="login-box container-fluid py-1 my-0">
             <!--for demo wrap-->
             <h1 style="color:white">Record<?php 
               $name = isset($_POST["name"])? test_input($_POST["name"]) : null;

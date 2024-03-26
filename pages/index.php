@@ -749,16 +749,20 @@ include 'topnav.php';
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>TIME-OUT!</h2>
+            <h2 class="modal-title">TIME-OUT</h2>
         </div>
         <div class="modal-body">
         <p><img id="modal_1" class="image3" src="../visitor/visitor_1.jpg"/></p>
-        <p ><h5 style="text-align:center;">This visitor have reach-up the maximum time given!</h5></p>
-        <p ><h5 style="text-align:center;">Kindly find the car and take action</h5></p>
+        <p>
+          <h5 class="text-center">
+          This visitor have reach-up the maximum time given!<br>
+          Kindly find the car and take action
+          </h5>
+        </p>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <h3></h3>
-        </div>
+        </div> -->
   </div>
 </div>
 
