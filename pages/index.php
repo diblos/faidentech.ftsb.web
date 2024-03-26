@@ -415,9 +415,9 @@ include 'topnav.php';
 
 <!-- TOP NAV ENDS -->
 
-    <div class="container-fluid py-4">
+    <div class="container-fluid py-2 px-3">
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 p-0">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -569,24 +569,24 @@ include 'topnav.php';
   if($ftype == 'user'){
 ?>
 
-      <div class="row mt-4">
-        <div class="col-lg-6">
-          <div class="card z-index-2">
-            <div class="card-header pb-0">
-              <h6 id="result_1">Exit Cam : </h6>
+      <div class="row mt-3" style="margin-right:1em">
+        <div class="col-lg-6 p-1">
+          <div class="card z-index-2 login-box" style="margin-left:1em">
+            <div class="card-header pt-2 pb-0 bg-transparent">
+              <h6 id="result_1" class="text-white">Exit Cam : </h6>
             </div>
-            <div class="card-body p-3">
+            <div class="card-body p-2">
               <iframe class="image" src="../pages/image_1.php" title="image_1"' scrolling="no"
               onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:auto;width:100%;border:none;overflow:hidden;"></iframe>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="card z-index-2">
-            <div class="card-header pb-0">
-              <h6 id="result_2">Entrance Cam : </h6>
+        <div class="col-lg-6 p-1">
+          <div class="card z-index-2 login-box" style="margin-left:1em">
+            <div class="card-header pt-2 pb-0 bg-transparent">
+              <h6 id="result_2" class="text-white">Entrance Cam : </h6>
             </div>
-            <div class="card-body p-3">
+            <div class="card-body p-2">
               <iframe class="image" src="../pages/image_2.php" title="image_2" scrolling="no"
               onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:auto;width:100%;border:none;overflow:hidden;"></iframe>
             </div>
@@ -598,15 +598,15 @@ include 'topnav.php';
 }
 ?>
 
-      <div class="row my-4">
-        <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+      <div class="row my-4" style="margin-right:1em">
+        <div class="col-lg-8 col-md-6 mb-md-0 mb-4 px-3">
           <div class="card login-box">
             <div class="card-header pb-0 bg-transparent">
               <div class="row">
                 <div class="col-lg-6 col-7">
                   <h6 class="text-light font-weight-bold">Last Records</h6>
                 </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
+                <!-- <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
                     <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-ellipsis-v text-secondary"></i>
@@ -617,14 +617,14 @@ include 'topnav.php';
                       <li><a class="dropdown-item border-radius-md" href="javascript:Exit();">Exit</a></li>
                     </ul>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="card-body px-0 py-2 text-light">
               <div class="table-responsive">
                 <table class="table align-items-center mb-0">
                   <thead>
-                    <tr>
+                    <tr class="text-light">
                       <th class="text-uppercase text-xxs font-weight-bolder opacity-7">License</th>
                       <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                       <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7">Time</th>
@@ -638,10 +638,10 @@ include 'topnav.php';
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 p-0">
           <div class="card h-100 login-box">
             <div class="card-header pb-0 bg-transparent">
-              <h6 class="text-light font-weight-bold">Visitor Record</h6>
+              <h6 class="text-white font-weight-bold">Visitor Record</h6>
             </div>
             <div class="card-body p-3 text-light">
               <div class="timeline timeline-one-side">
@@ -653,6 +653,12 @@ include 'topnav.php';
       </div>
       
     </div>
+
+<?php
+  if($ftype == 'user'){
+    echo '<div class="row"><div class="col">&nbsp;</div></div>';
+  }
+?>
 
 <?php
     include 'footer.php';

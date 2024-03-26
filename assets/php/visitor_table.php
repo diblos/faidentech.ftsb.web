@@ -18,7 +18,7 @@ require 'database.php';
               <i class="ni ni-credit-card text-warning text-gradient"></i>
             </span>
             <div class="timeline-content">
-              <h6 class="text-dark text-sm font-weight-bold mb-0">'. $variant .'</h6>
+              <h6 class="text-white text-sm font-weight-bold mb-0">'. $variant .'</h6>
               <p><img class="image4" src="../visitor/'. $variant .'.jpg"/> <img class="image4" src="../visitor_license/'. $variant .'.jpg"/></p>
               <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">'. strtoupper(date("d M g:i A", strtotime($time))) .'</p>
             </div>

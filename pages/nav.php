@@ -14,7 +14,7 @@ if(!isset($_COOKIE[$cookie_name])) {
     $ftype = $_COOKIE[$cookie_name];
   }
 ?>
-<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " data-color="warning">
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl m-0 fixed-start ms-3" data-color="warning">
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height:100%;">
       <ul class="navbar-nav">

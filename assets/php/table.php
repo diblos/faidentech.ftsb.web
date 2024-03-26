@@ -43,7 +43,7 @@ require_once 'categories.php';
             //echo json_encode($row);
             // print_r($row);
 
-            echo '<tr style="color:black;"> 
+            echo '<tr class="text-white"> 
                   <td>&nbsp;&nbsp; ' . $name . '</td> 
                   <td>' . $status . '</td> 
                   <td class="text-center">' . $time . '</td> 

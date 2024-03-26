@@ -54,8 +54,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 require_once '../assets/php/user.php';
 $name = $fid ? loadName($fid) : "User";
 ?>
-<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-      navbar-scroll="true">
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-0 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true" style="margin-right:1em !important">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -79,7 +78,7 @@ $name = $fid ? loadName($fid) : "User";
 <?php
 if ($fid) {
 ?>
-              <a href="../pages/profile.php" class="nav-link text-dark font-weight-bold px-0" title="User Profile">
+              <a href="../pages/profile.php" class="nav-link text-black font-weight-bold px-0" title="User Profile">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none text-capitalize"><?php echo $name; ?></span>
               </a>
