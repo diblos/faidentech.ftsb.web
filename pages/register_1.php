@@ -302,6 +302,8 @@ echo '<input type="hidden" name="fcategory" value="'.$fcategory.'" id="fcategory
 </section>
     </div>
 
+    <div class="row"><div class="col py-2"></div></div>
+
     </div>
 
 <?php

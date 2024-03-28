@@ -4,6 +4,7 @@ body {
     font-family: sans-serif;
     background: linear-gradient(orange, yellow);
     background-attachment: fixed;
+    overflow-x: hidden;
   }
 
   html {

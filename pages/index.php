@@ -603,8 +603,8 @@ include 'topnav.php';
           <div class="card login-box">
             <div class="card-header pb-0 bg-transparent">
               <div class="row">
-                <div class="col-lg-6 col-7">
-                  <h6 class="text-light font-weight-bold">Last Records</h6>
+                <div class="col p-0">
+                  <h6 class="text-light font-weight-bold m-0">Last Records</h6>
                 </div>
                 <!-- <div class="col-lg-6 col-5 my-auto text-end">
                   <div class="dropdown float-lg-end pe-4">
@@ -625,10 +625,10 @@ include 'topnav.php';
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr class="text-light">
-                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7">License</th>
-                      <th class="text-uppercase text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7">Time</th>
-                      <th class="text-center text-uppercase text-xxs font-weight-bolder opacity-7">Gate</th>
+                      <th class="text-uppercase text-xxs font-weight-bolder">License</th>
+                      <th class="text-uppercase text-xxs font-weight-bolder">Status</th>
+                      <th class="text-center text-uppercase text-xxs font-weight-bolder">Time</th>
+                      <th class="text-center text-uppercase text-xxs font-weight-bolder">Gate</th>
                     </tr>
                   </thead>
                   <tbody id="table">
@@ -641,7 +641,11 @@ include 'topnav.php';
         <div class="col-lg-4 col-md-6 p-0">
           <div class="card h-100 login-box">
             <div class="card-header pb-0 bg-transparent">
-              <h6 class="text-white font-weight-bold">Visitor Record</h6>
+              <div class="row">
+                <div class="col p-0">
+                  <h6 class="text-light font-weight-bold m-0">Visitor Record</h6>
+                </div>
+              </div>
             </div>
             <div class="card-body p-3 text-light">
               <div class="timeline timeline-one-side">

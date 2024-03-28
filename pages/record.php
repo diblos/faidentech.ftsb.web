@@ -51,7 +51,7 @@ foreach($optionsUC as $option) {
 }
 
 ?>
-        <div class="container-fluid py-4 px-0">
+        <div class="container-fluid pt-4 px-0">
             <div class="login-box">
                 <!-- <h2>Record</h2> -->
                 <h2>Report</h2>
@@ -105,18 +105,22 @@ foreach($optionsUC as $option) {
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <div class="row">
+                        <div class="col p-0" style="text-align:right;">
+                        <a href="#" class="m-0">
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-                        <button type="submit" class="btn btn-light  px-5"><i class="fa fa-eye"></i> Show</button>
-                    </a>
+                        <button type="submit" class="btn btn-light px-5 m-0"><i class="fa fa-eye"></i> Show</button>
+                        </a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
 
-        <section class="login-box container-fluid py-1 my-0">
+        <section class="login-box container-fluid py-1 my-4">
             <!--for demo wrap-->
             <h1 style="color:white">Record<?php 
               $name = isset($_POST["name"])? test_input($_POST["name"]) : null;
@@ -140,39 +144,7 @@ foreach($optionsUC as $option) {
                   // echo $containt.$datestart;
               } 
             ?></h1>
-            <form method="post" action="../assets/php/export.php">
-            <input type="hidden" name="name" required="" value="<?php echo $name; ?>" id="input-1">
-            <input type="hidden" name="license" required="" value="<?php echo $license; ?>" id="input-1">
-            <input type="hidden" name="datestart" required="" value="<?php 
-                $newdatestart = "";
-                $newdateend = "";
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                  $datestart = strtotime($_POST['datestart']);
-                if ($datestart) {
-                  $newdatestart = date('Y-m-d', $datestart);
-                  echo $newdatestart;
-                } else {
-                  echo null;
-                }
-                } ?>" id="input-1">
-            <input type="hidden" name="dateend" required="" value="<?php 
-                $newdateend = "";
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                  $dateend = strtotime($_POST['dateend']);
-                if ($dateend) {
-                  $newdateend = date('Y-m-d', $dateend);
-                  echo $newdateend;
-                } else {
-                    echo null;
-                }
-                } ?>" id="input-1">
-            <input type="hidden" name="containt" required="" value="<?php $newdatestart = "";
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        $containt = test_input($_POST["containt"]);
-                        echo $containt;
-                    } ?>" id="input-2">
-            <button type="submit" class="btn btn-success px-5"><i class="fa fa-file-download"></i> Download</button>
-            </form>
+           
             <div class="tbl-header">
                 <table cellpadding="0" cellspacing="0" border="0">
                     <thead>
@@ -334,13 +306,27 @@ foreach($optionsUC as $option) {
                     </tbody>
                 </table>
             </div>
+
+            <div class="row">
+                <div class="col pt-3 pb-0">
+                    <form method="post" action="../assets/php/export.php">
+                        <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>" id="input-1">
+                        <input type="hidden" name="license" required="" value="<?php echo $_POST["license"]; ?>" id="input-1">
+                        <input type="hidden" name="datestart" required="" value="<?php echo $_POST['datestart']; ?>" id="input-1">
+                        <input type="hidden" name="dateend" required="" value="<?php echo $_POST['dateend']; ?>" id="input-1">
+                        <input type="hidden" name="containt" required="" value="<?php echo $_POST["containt"]; ?>" id="input-2">
+                        <button type="submit" class="btn btn-success px-5" <?php echo $recordcount>0?'':'disabled' ?>><i class="fa fa-file-download"></i> Download</button>
+                    </form>
+                </div>
+            </div>
         </section>
         </div>
+
 
         <?php
         // echo $recordcount;
         ?>
-
+        <div class="row"><div class="col py-2"></div></div>
 
         </div>
 

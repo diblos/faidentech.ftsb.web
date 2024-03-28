@@ -68,49 +68,101 @@ include 'topnav.php';
 
     <div class="row">
     
-                <div class="col"></div>
+                <div class="col-1"></div>
 
-                <div class="col p-0">
-                  <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Entrance" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                    <i class="fa fa-caret-right" aria-hidden="true"></i> <i  class="fa fa-car"></i> Total Entrance
-                  </button></form>
+                <div class="col p-0 card" role="button">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <div class="col">
+
+                        <form method="post" action="../pages/record_2.php">
+                    <input type="hidden" name="containt" required="" value="Entrance" id="input-1">
+                    <button type="submit" class="btn btn-block pull-right">
+                    <h2 class="text-secondary"><i class="fa fa-caret-right" aria-hidden="true"></i> <i  class="fa fa-car"></i></h2>
+                      <!-- <i class="fa fa-caret-right" aria-hidden="true"></i> <i  class="fa fa-car"></i> -->
+                       <!-- Total Entrance -->
+                    </button></form>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col"><h5>Total Entrance</h5></div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="col p-0">
-                <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Exit" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                    <i class="fa fa-caret-left" aria-hidden="true"></i>   <i class="fa fa-car"></i> Total Exit
-                  </button>
-                </form>
+                <div class="col p-0 card mx-2" role="button">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <div class="col">
+
+                    <form method="post" action="../pages/record_2.php">
+                    <input type="hidden" name="containt" required="" value="Exit" id="input-1">
+                    <button type="submit" class="btn btn-block">
+                      <h2 class="text-secondary"><i class="fa fa-caret-left" aria-hidden="true"></i>   <i class="fa fa-car"></i></h2>
+                      <!-- <i class="fa fa-caret-left" aria-hidden="true"></i>   <i class="fa fa-car"></i> -->
+                       <!-- Total Exit -->
+                    </button>
+                    </form>
+
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col"><h5>Total Exit</h5></div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="col p-0">
-                <form method="post" action="../pages/record_2.php">
-                  <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                  <i class="fa fa-id-card" aria-hidden="true"></i> Authorize
-                  </button>
-                </form>
+                <div class="col p-0 card" role="button">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <div class="col">
+
+                    <form method="post" action="../pages/record_2.php">
+                    <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
+                    <button type="submit" class="btn btn-block">
+                    <h2 class="text-secondary"><i class="fa fa-id-card" aria-hidden="true"></i></h2>
+                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                     <!-- Authorize -->
+                    </button>
+                    </form>
+
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col"><h5>Authorize</h5></div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="col p-0">
-                <form method="post" action="../pages/visitor.php">
-                  <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
-                  <button type="submit" class="btn btn-light btn-block">
-                  <i class="fa fa-user-plus" aria-hidden="true"></i> Visitor
-                  </button>
-                </form>
+                <div class="col p-0 card mx-2" role="button">
+                  <div class="card-body text-center">
+                    <div class="row">
+                      <div class="col">
+
+                    <form method="post" action="../pages/visitor.php">
+                    <input type="hidden" name="containt" required="" value="Authorize" id="input-1">
+                    <button type="submit" class="btn btn-block">
+                    <h2 class="text-secondary"><i class="fa fa-user-plus" aria-hidden="true"></i></h2>
+                    <!-- <i class="fa fa-user-plus" aria-hidden="true"></i> -->
+                     <!-- Visitor -->
+                    </button>
+                    </form>
+
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col"><h5>Visitor</h5></div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="col"></div>
+                <div class="col-1"></div>
     
         </div>
       </div>
 
     </div>
+
 
 <?php
     include 'footer.php';
