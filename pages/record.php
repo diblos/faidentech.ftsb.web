@@ -310,11 +310,11 @@ foreach($optionsUC as $option) {
             <div class="row">
                 <div class="col pt-3 pb-0">
                     <form method="post" action="../assets/php/export.php">
-                        <input type="hidden" name="name" value="<?php echo $_POST["name"]; ?>" id="input-1">
-                        <input type="hidden" name="license" required="" value="<?php echo $_POST["license"]; ?>" id="input-1">
-                        <input type="hidden" name="datestart" required="" value="<?php echo $_POST['datestart']; ?>" id="input-1">
-                        <input type="hidden" name="dateend" required="" value="<?php echo $_POST['dateend']; ?>" id="input-1">
-                        <input type="hidden" name="containt" required="" value="<?php echo $_POST["containt"]; ?>" id="input-2">
+                        <input type="hidden" name="name" value="<?php echo isset($_POST["name"])? test_input($_POST["name"]) : null; ?>" id="input-1">
+                        <input type="hidden" name="license" required="" value="<?php echo isset($_POST["license"])? test_input($_POST["license"]) : null; ?>" id="input-1">
+                        <input type="hidden" name="datestart" required="" value="<?php echo isset($_POST["datestart"])? $_POST["datestart"] : null; ?>" id="input-1">
+                        <input type="hidden" name="dateend" required="" value="<?php echo isset($_POST["dateend"])? $_POST["dateend"] : null; ?>" id="input-1">
+                        <input type="hidden" name="containt" required="" value="<?php echo isset($_POST["containt"])? $_POST["containt"] : null; ?>" id="input-2">
                         <button type="submit" class="btn btn-success px-5" <?php echo $recordcount>0?'':'disabled' ?>><i class="fa fa-file-download"></i> Download</button>
                     </form>
                 </div>
